@@ -119,7 +119,7 @@ namespace ParrelSync
             var optionalLinkPaths = Preferences.OptionalSymbolicLinkFolders.GetStoredValue();
             var projectSettings = ParrelSyncProjectSettings.GetSerializedSettings();
             var projectSettingsProperty = projectSettings.FindProperty("m_OptionalSymbolicLinkFolders");
-            if (projectSettingsProperty is { isArray: true, arrayElementType: "string" })
+            if (projectSettingsProperty != null && projectSettingsProperty.isArray && projectSettingsProperty.arrayElementType == "string")
             {
                 for (var i = 0; i < projectSettingsProperty.arraySize; ++i)
                 {
